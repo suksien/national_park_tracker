@@ -19,16 +19,7 @@
         <td><%= park[:state] %></td>
         <td><%= park[:date_established] %></td>
         <td><%= park[:area_km2] %></td>
-        <td><%= park[:visited]? "Y" : "N" %>
-          </td>
-        <td>
-          <form action="/<%= park[:id] %>/edit" method="get">
-            <input type="submit" value="edit">
-          </form> 
-          <form action="/<%= park[:id] %>/delete" method="post">
-              <input type="submit" value="delete">
-          </form>
-        </td>
+        <td><%= park[:visited]? "Yes" : "No" %></td>
       </tr>
     <% end %>
   </table>
