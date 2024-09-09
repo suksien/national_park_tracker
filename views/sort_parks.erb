@@ -1,9 +1,3 @@
-<p><a href="/visited">Visited</a> <a href="/not-yet-visited">Not visited</a>
-</p>
-
-<p><a href="/parks-by-state">By state</a> <a href="/parks-by-year">By year</a> <a href="/parks-by-area">By area</a>
-</p>
-
 <div>
   <table>
     <tr>
@@ -13,7 +7,7 @@
       <th>Area (km2)</th>
       <th>Visited</th>
     </tr>
-    <% @parks.each do |park| %>
+    <% sort_parks(@parks, @criteria).each do |park| %>
       <tr>
         <td><a href="/<%= park[:name] %>/"><%= park[:name] %></a></td>
         <td><%= park[:state] %></td>
@@ -33,3 +27,5 @@
     <% end %>
   </table>
 </div>
+
+<a href="/">Back to homepage</a>

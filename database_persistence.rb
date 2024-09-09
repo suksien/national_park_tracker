@@ -27,12 +27,12 @@ class DatabasePersistence
 
   def sql_out_to_hsh(result)
     {
-      id: result["id"],
+      id: result["id"].to_i,
       name: result["name"], 
       state: result["state"], 
       date_established: result["date_established"],
-      area_acres: result["area_acres"],
-      area_km2: result["area_km2"],
+      area_acres: result["area_acres"].to_i,
+      area_km2: result["area_km2"].to_i,
       description:  result["description"],
       visited: result["visited"] == "t",
       date_visited: result["date_visited"],
