@@ -11,10 +11,7 @@ CREATE TABLE park_info (
   date_established date,
   area_acres numeric,
   area_km2 numeric,
-  description text,
-  visited boolean NOT NULL DEFAULT false,
-  visit_date date,
-  visit_note text
+  description text
 );
 
 \copy park_info (name,state,date_established,area_acres,area_km2,description) from 'data/mini_df.csv' csv header;
@@ -28,4 +25,4 @@ CREATE TABLE visits (
 );
 
 INSERT INTO visits (park_id)
-VALUES (1), (2), (3), (4), (5), (6); 
+VALUES (1), (2), (3), (4), (5), (6);

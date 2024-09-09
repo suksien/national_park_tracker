@@ -3,6 +3,7 @@ require "sinatra/reloader"
 require "sinatra/content_for"
 require "tilt/erubis"
 require_relative "database_persistence"
+require "pry"
 
 configure do
   enable :sessions
@@ -20,6 +21,6 @@ end
 
 ## GET routes
 get "/" do
-  "Getting started."
+  @parks = @storage.get_all_parks
   erb :homepage
 end
