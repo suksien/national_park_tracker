@@ -71,19 +71,26 @@ def valid_date?(date)
   end
 end
 
-# TBC (the POST path for update)
-get "/:name/update" do
+get "/:name/edit" do
   @park = @storage.get_park(params[:name])
-  @update = true
+  @edit = true
   erb :park
 end
 
 ### POST routes
 post "/:name/edit" do
-  if valid_date?(params[:date_visited])
-    @storage.update_park_visit(params[:name], params[:date_visited], params[:note])
+  @park = @storage.get_park(params[:name])
+  
+  if params[:date_visited] == "" && @park[:date_visited]
+    new_date = @park[:date_visited]
   else
-    session[:error] = "Not a valid date. Please enter a date following the YYYY-MM-DD format. "
+    new_date = params[:date_visited]
+  end
+
+  if valid_date?(new_date)
+    @storage.update_park_visit(params[:name], new_date, params[:note])
+  else
+    session[:error] = "Not a valid date. Please enter a date following the YYYY-MM-DD format."
   end
   redirect "/#{params[:name]}/"
 end

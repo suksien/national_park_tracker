@@ -1,10 +1,10 @@
 <h2><%= @park[:name] %></h2>
 <p><%= @park[:description] %></p>
 
-<% if !@park[:visited] || @update %>
+<% if !@park[:visited] || @edit %>
   <form method="post" action="/<%= @park[:name] %>/edit">
     <ul>
-      <% if @update %>
+      <% if @edit %>
         <li>Date visited: <input name="date_visited" placeholder="<%= @park[:date_visited] %>" type="text" value=""></li>
         <li>Visit note: <textarea cols=30 rows=5 name="note" placeholder="<%= @park[:note] %>" type="text" value=""></textarea></li>
       <% else %>
@@ -15,7 +15,11 @@
 
     <fieldset>
       <input type="submit" value="Submit">
-      <a href="/">Cancel</a>
+      <% if @edit %>
+        <a href="/<%= @park[:name] %>/">Cancel</a>
+      <% else %>
+        <a href="/">Cancel</a>
+      <% end %>
     </fieldset>
   </form>
 
@@ -25,6 +29,6 @@
     <li>Visit note: <%= @park[:note]%> </li>
     </li>
   </ul>
-  <a href="/<%= @park[:name] %>/update">Update</a>
+  <a href="/<%= @park[:name] %>/edit">Edit</a>
   <a href="/">Back to homepage</a>
 <% end %>
