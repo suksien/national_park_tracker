@@ -13,7 +13,7 @@
       <th>Area (km2)</th>
       <th>Visited</th>
     </tr>
-    <% @parks.each do |park| %>
+    <% sort_parks(@parks, @criteria).each do |park| %>
       <tr>
         <td><a href="/<%= park[:name] %>/"><%= park[:name] %></a></td>
         <td><%= park[:state] %></td>

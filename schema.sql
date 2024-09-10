@@ -9,12 +9,11 @@ CREATE TABLE park_info (
   name text NOT NULL,
   state text NOT NULL,
   date_established date,
-  area_acres numeric,
   area_km2 numeric,
   description text
 );
 
-\copy park_info (name,state,date_established,area_acres,area_km2,description) from 'data/mini_df.csv' csv header;
+\copy park_info (name,state,date_established,area_km2,description) from 'data/mini_df.csv' csv header;
 
 CREATE TABLE visits (
   id serial PRIMARY KEY,

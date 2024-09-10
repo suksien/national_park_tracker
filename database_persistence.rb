@@ -50,6 +50,19 @@ class DatabasePersistence
     query(statement, date_visited, note, park_id)
   end
 
+  def get_visited_parks(visited)
+    statement = <<~sql
+      SELECT *
+      FROM park_info as p
+      JOIN visits as v
+      ON p.id = v.park_id
+      WHERE v.visited = $1
+    sql
+
+    result = query(statement, visited)
+    result.map { |tuple| sql_out_to_hsh(tuple) }
+  end
+
   private
 
   def sql_out_to_hsh(result)
