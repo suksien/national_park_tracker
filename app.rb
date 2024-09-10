@@ -77,6 +77,17 @@ get "/:name/edit" do
   erb :park
 end
 
+# TBC here
+get "/visited" do
+  @parks = @storage.get_visited_parks
+  erb :visited
+end
+
+get "/not-yet-visited" do
+  @parks = @storage.get_not_visited_parks
+  erb :visited
+end
+
 ### POST routes
 post "/:name/edit" do
   @park = @storage.get_park(params[:name])
