@@ -63,6 +63,22 @@ class DatabasePersistence
     result.map { |tuple| sql_out_to_hsh(tuple) }
   end
 
+  def insert_park(name, state, date, area, desc)
+    statement = <<~sql
+      INSERT INTO park_info (name, state, date_established, area_km2, description)
+      VALUES ($1, $2, $3, $4, $5)
+    sql
+
+    query(statement, name, state, date, area, desc)
+
+    statement = "SELECT id FROM park_info where name = $1"
+    result = query(statement, name)
+    id = result[0]["id"]
+
+    statement = "INSERT INTO visits (park_id) VALUES ($1)"
+    query(statement, id)
+  end
+
   private
 
   def sql_out_to_hsh(result)

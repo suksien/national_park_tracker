@@ -42,7 +42,6 @@ end
 ### GET routes
 get "/" do
   @parks = @storage.get_all_parks
-  @criteria = "id"
   erb :homepage
 end
 
@@ -127,9 +126,9 @@ end
 post "/add-park/" do
   name, state, date, area, desc = params[:name], params[:state], params[:date], params[:area_km2], params[:description]   
   
-  # TBC
   if valid_park?(name, state, date, area, desc)
-    "yay"
+    @storage.insert_park(name, state, date, area, desc)
+    redirect "/"
   else
     if !valid_name?(name)
       session[:error] = "Invalid park name."

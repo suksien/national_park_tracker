@@ -8,13 +8,15 @@
 <div>
   <table>
     <tr>
+      <th>No</th>
       <th>Name</th>
       <th>State</th>
       <th>Date established</th>
       <th>Area (km2)</th>
     </tr>
-    <% @parks.each do |park| %>
+    <% sort_parks(@parks, "id").each_with_index do |park, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><a href="/<%= park[:name] %>/"><%= park[:name] %></a></td>
         <td><%= park[:state] %></td>
         <td><%= park[:date_established] %></td>
