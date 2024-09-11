@@ -16,17 +16,22 @@ main {
 }
 
 .error {
-  background: #FFCFBF; 
+  font-family: arial, sans-serif;
+  background: #FFCFBF;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
 }
 
-.success {
+.message {
   background: #CBF2E5;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
+}
+
+form {
+  display: inline-block;
 }
 
 table {

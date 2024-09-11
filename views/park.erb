@@ -1,4 +1,5 @@
 <h2><%= @park[:name] %></h2>
+<img width=60% height=60% src="/images/<%= @park[:name].downcase %>-np.avif">
 <p><%= @park[:description] %></p>
 
 <% if !@park[:visited] || @edit %>

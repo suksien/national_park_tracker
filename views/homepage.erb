@@ -1,4 +1,9 @@
-<p>There are <%= @parks.size %> national parks in your tracker! </p>
+<% if @parks.size <= 1 %>
+  <p>There is <%= @parks.size %> national park in your tracker! </p>
+<% else %>
+  <p>There are <%= @parks.size %> national parks in your tracker! </p>
+<% end %>
+
 <p><a href="/add-park">Add a park</a></p>
 
 <p><a href="/visited">Visited</a> | <a href="/not-yet-visited">Not visited</a> | 
@@ -19,7 +24,11 @@
     <% sort_parks(@parks, "id").each_with_index do |park, index| %>
       <tr>
         <td><%= index + 1 %></td>
-        <td><a href="/<%= park[:name] %>/"><%= park[:name] %></a></td>
+        <td><a href="/<%= park[:name] %>/"><%= park[:name] %></a>
+            <form class="delete" method="post" action="/<%= park[:name] %>/delete">
+              <input type="image" width=15 height=15 src="/images/icon_delete.png">
+            </form>
+        </td>
         <td><%= park[:state] %></td>
         <td><%= park[:date_established] %></td>
         <td><%= park[:area_km2] %></td>

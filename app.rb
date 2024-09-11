@@ -42,6 +42,7 @@ end
 ### GET routes
 get "/" do
   @parks = @storage.get_all_parks
+  #binding.pry
   erb :homepage
 end
 
@@ -160,4 +161,10 @@ post "/:name/edit" do
     session[:error] = "Not a valid date. Please enter a date following the YYYY-MM-DD format."
   end
   redirect "/#{params[:name]}/"
+end
+
+post "/:name/delete" do
+  @storage.delete_park(params[:name])
+  session[:message] = "#{params[:name].capitalize} park has been deleted."
+  redirect "/"
 end

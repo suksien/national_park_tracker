@@ -3,7 +3,7 @@
   <head>
     <title>Name of Application</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="/stylesheets/app.css">
   </head>
   <header>
     <h1>National Park Tracker</h1>
@@ -16,7 +16,7 @@
     <% end %>
 
     <% if session[:message] %>
-      <div class="success">
+      <div class="message">
         <%= session.delete(:message) %>
       </div>
     <% end %>

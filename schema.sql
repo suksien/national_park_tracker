@@ -17,11 +17,11 @@ CREATE TABLE park_info (
 
 CREATE TABLE visits (
   id serial PRIMARY KEY,
-  park_id integer REFERENCES park_info (id) NOT NULL,
+  park_id integer NOT NULL REFERENCES park_info (id) ON DELETE CASCADE,
   visited boolean NOT NULL DEFAULT false,
   date_visited date,
   note text
 );
 
 INSERT INTO visits (park_id)
-VALUES (1), (2), (3), (4), (5), (6);
+VALUES (1), (2), (3), (4), (5), (6), (7), (8), (9), (10);

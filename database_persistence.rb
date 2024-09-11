@@ -78,6 +78,11 @@ class DatabasePersistence
     statement = "INSERT INTO visits (park_id) VALUES ($1)"
     query(statement, id)
   end
+ 
+  def delete_park(name)
+    statement = "DELETE FROM park_info where name = $1"
+    query(statement, name)
+  end
 
   private
 
