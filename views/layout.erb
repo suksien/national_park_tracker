@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en-US">
   <head>
-    <title>Name of Application</title>
+    <title>National Park Tracker</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/stylesheets/app.css">
   </head>
   <header>
-    <h1>National Park Tracker</h1>
+    <h1>National Park Tracker
+    </h1>
   </header>
   <body>
     <% if session[:error] %>
@@ -22,6 +23,7 @@
     <% end %>
   </body>
   <main>
+    <p><%== yield_content :homepage_link %></p>
     <%== yield %>
   </main>
 

@@ -1,6 +1,6 @@
 <h2><%= @park[:name] %></h2>
 <img width=60% height=60% src="/images/<%= @park[:name].downcase %>-np.avif">
-<p><%= @park[:description] %></p>
+<p class="park_description"><%= @park[:description] %></p>
 
 <% if !@park[:visited] || @edit %>
   <form method="post" action="/<%= @park[:name] %>/edit">
@@ -32,4 +32,8 @@
   </ul>
   <a href="/<%= @park[:name] %>/edit">Edit</a>
   <a href="/">Back to homepage</a>
+<% end %>
+
+<% content_for :homepage_link do %>
+  <a class="all_parks" href="/">All parks</a>
 <% end %>
