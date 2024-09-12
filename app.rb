@@ -17,15 +17,6 @@ configure(:development) do
 end
 
 helpers do
-  # def sort_parks(parks, criteria)
-  #   case criteria
-  #   when "state" then parks.sort_by { |park| park[:state] }
-  #   when "year" then parks.sort_by { |park| DateTime.parse(park[:date_established]).to_date }
-  #   when "area" then parks.sort_by { |park| park[:area_km2] }
-  #   when "id" then parks.sort_by { |park| park[:id] }
-  #   end
-  # end
-
   def sort_parks(parks, criteria)
     if criteria == "year"
       parks.sort_by { |park| DateTime.parse(park[:date_established]).to_date }
