@@ -1,0 +1,16 @@
+<h2>Editing <%= @park[:name] %></h2>
+
+<form method="post" action="/parks/<%= @park[:name]%>/edit">
+  <ul>
+    <li>Name of park: <input name="park_name" placeholder="Park name in full" type="text" value="<%= @new_name || @park[:name] %>" size="30"></li>
+    <li>State where park is located: <input name="state" placeholder="State name in full" type="text" value="<%= @new_state || @park[:state] %>" size="30"></li>
+    <li>Date park is established: <input name="date" placeholder="Enter a date (YYYY-MM-DD)" type="text" value="<%= @new_date || @park[:date_established] %>" size="30"></li>
+    <li>Area of park (km2): <input name="area_km2" placeholder="Enter a number" value="<%= @new_area || @park[:area_km2] %>" size="30"></li>
+    <li>Description: <textarea cols=30 rows=5 name="description" placeholder="Enter a park description" type="text"><%= @new_desc || @park[:description] %></textarea></li>
+  </ul>
+
+  <fieldset>
+    <input type="submit" value="Submit">
+    <a href="/parks/<%= @park[:name]%>/visits/page=1">Cancel</a>
+    </fieldset>
+</form>

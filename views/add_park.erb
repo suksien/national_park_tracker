@@ -1,0 +1,17 @@
+<h2>Add a park</h2>
+<p>Please enter a value for each field.</p>
+
+<form method="post" action="/parks/add-park/">
+  <ul>
+    <li>Name of park: <input name="name" placeholder="Park name in full" type="text" value="<%= @park_name || "" %>" size="30"></li>
+    <li>State where park is located: <input name="state" placeholder="State name in full" type="text" value="<%= @park_state || "" %>" size="30"></li>
+    <li>Date park is established: <input name="date" placeholder="Enter a date (YYYY-MM-DD)" type="text" value="<%= @park_date || "" %>" size="30"></li>
+    <li>Area of park (km2): <input name="area_km2" placeholder="Enter a number" type="text" value="<%= @park_area || "" %>" size="30"></li>
+    <li>Description: <textarea cols=30 rows=5 name="description" placeholder="Enter a park description" type="text"><%= @park_desc || "" %></textarea></li>
+  </ul>
+
+  <fieldset>
+    <input type="submit" value="Submit">
+    <a href="/">Cancel</a>
+    </fieldset>
+</form>

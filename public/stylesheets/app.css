@@ -1,0 +1,63 @@
+header {
+  padding: 1px 1px 1px 1px;
+  border-radius: 10px;
+  background: #f6f6f6;
+  background-color: #f6f6f6;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%; 
+  text-align: center;
+}
+
+main {
+  font-family: arial, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  font-size: 100%;
+}
+
+img {
+  border-radius: 8px;
+}
+
+.all_parks {
+  font-size: 16px; 
+}
+
+/*
+.park_description {
+  font-size: 15px;
+}*/
+
+.error {
+  font-family: arial, sans-serif;
+  background: #FFCFBF;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+.message {
+  font-family: arial, sans-serif;
+  background: #CBF2E5;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+}
+
+form {
+  display: inline-block;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}

@@ -1,0 +1,13 @@
+<h2>Add a visit to <%= params[:name] %> </h2>
+
+<form method="post" action="/parks/<%= params[:name] %>/add_visit">
+  <ul>
+    <li>Date visited: <input name="date_visited" placeholder="Enter a date (YYYY-MM-DD)" type="text" value="<%= @visit_date || "" %>" size="30"></li>
+    <li>Visit note (optional): <textarea cols=30 rows=5 name="visit_note" placeholder="Enter a note (at least 1 character)" type="text"><%= @visit_note || "" %></textarea></li>
+  </ul>
+
+  <fieldset>
+    <input type="submit" value="Submit">
+    <a href="/parks/<%= params[:name] %>/visits/page=1">Cancel</a>
+    </fieldset>
+</form>

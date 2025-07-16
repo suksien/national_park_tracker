@@ -1,0 +1,50 @@
+<% if session[:username] %>
+  <% if @nparks <= 1 %>
+    <p><b>There is <%= @nparks %> national park in your tracker! </b></p>
+  <% else %>
+    <p><b>There are <%= @nparks %> national parks in your tracker! </b></p>
+  <% end %>
+
+  <p><a href="/parks/add-park">Add a park</a></p>
+
+  <table>
+    <tr>
+      <th>No</th>
+      <th>Name</th>
+      <th>State</th>
+      <th>Date established</th>
+      <th>Area (km2)</th>
+      <th>Visited</th>
+    </tr>
+
+    <% @parks.each_with_index do |park, index| %>
+      <tr>
+        <td><%= (index + 1) + @max_output * (@page_num - 1) %></td>
+        <td><a href="/parks/<%= park[:name] %>/visits/page=1"><%= park[:name] %></a>
+            <form class="delete" method="post" action="/parks/<%= park[:name] %>/delete">
+              <input type="image" width=15 height=15 src="/images/icon_delete.png">
+            </form>
+        </td>
+        <td><%= park[:state] %></td>
+        <td><%= park[:date_established] %></td>
+        <td><%= park[:area_km2] %></td>
+        <td><%= park[:visit_count] > 0 ? "Yes" : "No" %></td>
+      </tr>
+    <% end %>
+  </table>
+  <% if @nparks > @max_output %>
+    <p>
+      <a href="/parks/page=1">First</a> 
+      <a href="/parks/page=<%= params[:page].to_i - 1 %>">Previous</a> 
+      <a href="/parks/page=<%= params[:page].to_i + 1%>">Next</a>
+      <a href="/parks/page=<%= @last_page %>">Last</a>
+    </p>
+  <% end %>
+  <br>
+  <form action="/users/signout" method="post">
+    <button>Sign Out</button>
+  </form>
+
+<% else %>
+  <p><a href="/users/signin">Sign in</a></p>
+<% end %>

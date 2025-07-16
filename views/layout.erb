@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>USA National Park Tracker</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/stylesheets/app.css">
+  </head>
+  <header>
+    <h1>USA National Park Tracker</h1>
+  </header>
+  <body>
+    <% if session[:error] %>
+      <div class="error">
+      <% if session[:error].is_a?(Array) %>
+        <% session[:error].each do |err| %>
+          <p><%= err %></p>
+        <% end %>
+        <% session.delete(:error) %>
+      <% elsif session[:error].is_a?(String)  %>
+        <p><%= session.delete(:error) %></p>
+      <% end %>
+      </div>
+    <% end %>
+
+    <% if session[:message] %>
+      <div class="message">
+        <p><%= session.delete(:message) %></p>
+      </div>
+    <% end %>
+  </body>
+  <main>
+    <p><%== yield_content :homepage_link %></p>
+    <%== yield %>
+  </main>
+
+</html>

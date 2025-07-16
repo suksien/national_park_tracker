@@ -1,0 +1,32 @@
+<h2><%= @park[:name] %></h2>
+<a href="/parks/<%= @park[:name] %>/edit">Edit park</a>
+
+<p class="park_description"><%= @park[:description] %></p>
+<p><%= @park[:name] %>, which is located in the state of <%= @park[:state] %>, is established as a national park 
+on <%= @park[:date_established] %>. It spans <%= @park[:area_km2] %> square kilometer in area. </p>
+    
+<h3>Visit history</h3>
+<p><a href="/parks/<%= @park[:name] %>/add_visit">Add a visit</a></p>
+
+<% @park_visits.each_with_index do |visit, index| %>
+  <p>Visit <%= (index + 1) + @max_output * (@page_num - 1) %>:</p>
+  <li>Date visited: <%= visit[:date_visited] %></li>
+  <li>Visit note: <%= visit[:note] %></li>
+  <form action="/parks/<%= @park[:name] %>/visits/<%= visit[:id] %>/edit" method="get">
+    <button>edit</button>
+  </form>
+
+  <form action="/parks/<%= @park[:name] %>/visits/<%= visit[:id] %>/delete" method="post">
+    <button>delete</button>
+  </form>
+<% end %>
+<p>
+  <% if @nvisits > @max_output %>
+    <a href="/parks/<%= @park[:name] %>/visits/page=<%= params[:page].to_i - 1 %>">Previous</a> 
+    <a href="/parks/<%= @park[:name] %>/visits/page=<%= params[:page].to_i + 1%>">Next</a>
+  <% end %>
+</p>
+
+<% content_for :homepage_link do %>
+  <a class="all_parks" href="/">Back to all parks</a>
+<% end %>
