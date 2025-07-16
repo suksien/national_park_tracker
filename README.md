@@ -36,16 +36,11 @@ For adding a new visit, only a date input is required. The application checks fo
 The database behind this application hosts three tables, where `park_info` and `visits` are the main tables in a 1:M relationship. The third table, `user`, stores the user login information and exists independently. The user password is first encrypted using BCrypt before being stored here. 
 
 # Future improvements:
-Some extra features that are nice but out of the scope of this assessment:
+Some extra features that are nice:
 1. Add a `visited` and `not yet visited` links.
 2. Add a `sign up` link.
 3. Add ability to sort parks by state, area, and established dates. 
 4. Add a stock image for each park page. Maybe even allow users to upload their own photos from their visits.  
-
-# Misc: 
-For naming the routes, I chose to use the park name rather than the park id for user-friendliness. However, this does mean that in order to extract a particular visit history for a park, I need to first query the park id from the first primary table and then use the park id to query for the visit information from other primary table. Even though it results in one extra query per request, I think this makes the URL reads more naturally. 
-
-URLs with invalid page number when scrolling through the parks or visits will be redirected to the closest page number. All other unknown URLs will be redirected to the homepage. 
 
 # Credits:
 1. Sample seed data in `data/mini_df.csv` are obtained and adapted from Kaggle (https://www.kaggle.com/datasets/thedevastator/the-united-states-national-parks)
